@@ -7,21 +7,29 @@ let comidas = [
 ];
 
 function microondas(prato, tempo) {
-  let padrao = comidas[prato - 1].tempo
-  let bip ="\n Prato pronto, bom apetite!!!"
-  let texto=`Prato selecionado foi: ${comidas[prato - 1].prato}\n`
+  if (prato >0 && prato <5) {
+    let padrao = comidas[prato - 1].tempo
+    let bip ="\nPrato pronto, bom apetite!!!"
+    let texto=`Prato selecionado foi: ${comidas[prato - 1].prato}\n`
+  
+    if (tempo < padrao) {
+      return `${texto}Tempo insuficiente ${bip}`;
+    } else if (tempo == padrao) {
+      return `${texto}Tempo padrao selecionado ${bip}`;
+    } else if (tempo < padrao * 2) {
+      return `${texto}Potencia alterada com sucesso! ${bip}`;
+    } else if (tempo < padrao * 3) {
+      return `${texto}A comida queimou ${bip}`;
+    } else {
+      return `${texto}Kabumm ${bip}`;
+    }
 
-  if (tempo < padrao) {
-    return `${texto}Tempo insuficiente ${bip}`;
-  } else if (tempo == padrao) {
-    return `${texto}Tempo padrao selecionado ${bip}`;
-  } else if (tempo < padrao * 2) {
-    return `${texto}Potencia alterada com sucesso! ${bip}`;
-  } else if (tempo < padrao * 3) {
-    return `${texto}A comida queimou ${bip}`;
-  } else {
-    return `${texto}Kabumm ${bip}`;
+  }else{
+    return "O número digitado não foi encontrado dentre as opções do MENU!"
+
   }
+
+  
 }
 
 //MENU
@@ -33,4 +41,4 @@ function microondas(prato, tempo) {
 
 //De acordo com o menu, use a função microondas().
 //Digite primeiro o numero respectivo ao prato escolhido, e a quantidade de tempo em segundos:
-console.log(microondas(3, 15));
+console.log(microondas(1,15));
